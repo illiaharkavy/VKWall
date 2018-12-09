@@ -8,12 +8,18 @@
 
 import Moya
 
-public enum VK {
+enum VK {
     
     static private let accessToken = "e78cd613e78cd613e78cd61327e7ebbd2dee78ce78cd613bb818392820453f3d1403ce4"
     static private let version = "5.92"
     
-    case wallPosts(id: String, count: Int)
+    case wallPosts(string: String, type: RequestType, count: Int)
+    
+    enum RequestType {
+        case ownerID
+        case domain
+    }
+    
 }
 
 extension VK: TargetType {
@@ -30,7 +36,7 @@ extension VK: TargetType {
     
     public var method: Moya.Method {
         switch self {
-        case .wallPosts(id: _): return .get
+        case .wallPosts: return .get
         }
     }
     
@@ -41,16 +47,19 @@ extension VK: TargetType {
     public var task: Task {
         
         switch self {
-        case .wallPosts(id: let id, count: let count):
-            // 3
-            return .requestParameters(
-                parameters: [
-                    "owner_id": id,
-                    "count": count,
-                    "access_token": VK.accessToken,
-                    "v": VK.version
-                ],
-                encoding: URLEncoding.default)
+        case .wallPosts(string: let string, type: let type, count: let count):
+            var parameters: [String: Any] = [
+                "count": count,
+                "access_token": VK.accessToken,
+                "v": VK.version
+            ]
+            switch type {
+            case .domain:
+                parameters["domain"] = string
+            case .ownerID:
+                parameters["owner_id"] = string
+            }
+            return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
         }
     }
     

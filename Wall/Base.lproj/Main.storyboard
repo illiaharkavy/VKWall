@@ -49,29 +49,36 @@
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YSy-FT-4EO">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Gdo-HZ-qOv">
-                                        <rect key="frame" x="67.5" y="132.5" width="240" height="96.5"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Gdo-HZ-qOv">
+                                        <rect key="frame" x="67.5" y="102.5" width="240" height="156.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter ID ant tap Search" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AeF-XR-lpw">
-                                                <rect key="frame" x="31.5" y="0.0" width="177" height="20.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Owner ID or Domain" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AeF-XR-lpw">
+                                                <rect key="frame" x="20.5" y="0.0" width="199" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="F8C-OB-LxY">
+                                                <rect key="frame" x="48.5" y="36.5" width="143" height="29"/>
+                                                <segments>
+                                                    <segment title="Owner ID"/>
+                                                    <segment title="Domain"/>
+                                                </segments>
+                                            </segmentedControl>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Start typing..." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gj3-lb-Vn3">
-                                                <rect key="frame" x="0.0" y="28.5" width="240" height="30"/>
+                                                <rect key="frame" x="0.0" y="80.5" width="240" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="240" id="BpI-FH-ggi"/>
                                                 </constraints>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                <textInputTraits key="textInputTraits"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="BYZ-38-t0r" id="L2w-8B-DLx"/>
                                                 </connections>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r7D-l9-oNO">
-                                                <rect key="frame" x="96" y="66.5" width="48" height="30"/>
+                                                <rect key="frame" x="96" y="126.5" width="48" height="30"/>
                                                 <state key="normal" title="Search"/>
                                                 <connections>
                                                     <action selector="searchButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ati-2U-qE4"/>
@@ -146,6 +153,7 @@
                         <outlet property="activityIndicator" destination="owt-B9-bmn" id="xCF-2Q-KbC"/>
                         <outlet property="errorContainerView" destination="9cx-A8-0FY" id="LDu-jy-6aw"/>
                         <outlet property="inputContainerView" destination="YSy-FT-4EO" id="QBf-8t-lPd"/>
+                        <outlet property="requestTypeSegmentedControl" destination="F8C-OB-LxY" id="rjS-qr-c50"/>
                         <outlet property="tableView" destination="Tbq-eV-HC8" id="5hN-k6-cyV"/>
                         <outlet property="textField" destination="gj3-lb-Vn3" id="tI6-TO-L3k"/>
                     </connections>

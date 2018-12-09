@@ -62,6 +62,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var errorContainerView: UIView!
+    @IBOutlet weak var requestTypeSegmentedControl: UISegmentedControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,7 +73,8 @@ class ViewController: UIViewController {
         guard !id.isEmpty else { return }
         state = .loading(id)
         let encodedText = id.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
-        provider.request(.wallPosts(id: encodedText, count: 50)) { [weak self] result in
+        let type: VK.RequestType = requestTypeSegmentedControl.selectedSegmentIndex == 0 ? .ownerID : .domain
+        provider.request(.wallPosts(string: encodedText, type: type, count: 50)) { [weak self] result in
             guard let self = self else { return }
             
             switch result {
